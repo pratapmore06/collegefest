@@ -7,7 +7,3 @@ class EventAdmin(admin.ModelAdmin):
     search_fields = ('title', 'location')
     list_filter = ('date',)
 
-@admin.register(Participation)
-class ParticipationAdmin(admin.ModelAdmin):
-    list_display = ('user', 'event', 'participated_at')
-    search_fields = ('user__username', 'event__title')

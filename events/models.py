@@ -17,7 +17,8 @@ class Participation(models.Model):
     participated_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ('user', 'event')  # user can participate only once per event
+        unique_together = ('user', 'event') 
+        app_label = 'events'  # user can participate only once per event
 
     def __str__(self):
         return f"{self.user.username} - {self.event.title}"
@@ -33,3 +34,5 @@ class Participation(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.event.title}"
+    
+    
