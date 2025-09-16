@@ -1,0 +1,14 @@
+{% extends 'events/base.html' %}
+{% block content %}<br>
+
+<h2  class="bg-indigo-400 text-gray-900 font-bold py-3 px-8 text-lg hover:bg-yellow-500 transition duration-300 shadow-lg transform hover:scale-105">Edit Participation for "{{ participation.event.title }}"</h2><br>
+<form method="post">
+    <br>
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <br><br>
+  <button type="submit"  class="bg-red-400 text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-red-500 transition duration-300 shadow-lg transform hover:scale-105" >Save Changes</button>
+  <a  class="bg-yellow-400 text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-500 transition duration-300 shadow-lg transform hover:scale-105" href="{% url 'my_participations' %}">Cancel</a>
+</form>
+{% endblock %}

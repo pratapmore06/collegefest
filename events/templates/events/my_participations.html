@@ -1,0 +1,18 @@
+{% extends 'events/base.html' %}
+{% block content %}
+<h2  class="text-4xl font- text-red-400 hover:text-indigo-400 transition duration-300">My Participations</h2><br><br>
+{% if participations %}
+  <ul class="participation-list">
+    {% for p in participations %}
+      <li>
+        <strong><a href="{% url 'event_detail' p.event.id %}">{{ p.event.title }}</a></strong> - Registered on {{ p.participated_at|date:"M d, Y" }}
+        <p>Note: {{ p.note|default:"No notes added." }}</p>
+        <a href="{% url 'edit_participation' p.pk %}">Edit</a> |
+        <a href="{% url 'delete_participation' p.pk %}">Cancel</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>You have not registered for any events yet.</p>
+{% endif %}
+{% endblock %}

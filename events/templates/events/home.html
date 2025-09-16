@@ -1,0 +1,231 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<section id="events-list">
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="text-8xl md:text-8xl lg:text-8xl font-extrabold leading-tight mb-6 animate-fade-in-down">Welcome to CollegeFest 2025!</h1>
+    <p class="text-xl md:text-2xl lg:text-3xl font-light mb-10 animate-fade-in-up animate-delay-500">Discover exciting events and participate to make your college life memorable.</p>
+    <a href="#events-list" class="bg-yellow-400 text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-500 transition duration-300 shadow-lg transform hover:scale-105 ">Explore Events</a>
+  </div>
+</section>
+
+
+
+<br><br>
+<!-- Featured Events Section -->
+    <section id="upcomng-events" class="py-16 bg-white rounded-xl shadow-lg mb-16">
+        <div class="text-center mb-12">
+            <h2 class="section-heading text-yellow-400">Major Events</h2>
+            <p class="text-xl text-gray-600 mt-4">Handpicked highlights from our vibrant community.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-8">
+            <!-- Example Featured Event 1 -->
+            <div class="bg-gradient-to-br from-purple-500 to-indigo-600 text-white p-8 rounded-xl shadow-xl card">
+                <h3 class="text-3xl font-bold mb-3">Annual Tech Fest 2025</h3>
+                <p class="text-lg mb-2">🗓️ Oct 15-17, 2025 | 📍 University Auditorium</p>
+                <p class="mb-4">Dive into the future with workshops, hackathons, and expert talks. Don't miss the AI showcase!</p>
+               
+            </div>
+            <!-- Example Featured Event 2 -->
+            <div class="bg-gradient-to-br from-pink-500 to-red-600 text-white p-8 rounded-xl shadow-xl card">
+                <h3 class="text-3xl font-bold mb-3">Cultural Extravaganza</h3>
+                <p class="text-lg mb-2">🗓️ Oct 1-3, 2025 | 📍 Campus Amphitheater</p>
+                <p class="mb-4">Celebrate diversity with music, dance, drama, and art from around the globe. Food stalls included!</p>
+               
+            </div>
+            <!-- Example Featured Event 3 -->
+            <div class="bg-gradient-to-br from-green-500 to-teal-600 text-white p-8 rounded-xl shadow-xl card">
+                <h3 class="text-3xl font-bold mb-3">Startup Summit</h3>
+                <p class="text-lg mb-2">🗓️ Oct 20, 2025 | 📍 Innovation Hub</p>
+                <p class="mb-4">Connect with industry leaders, pitch your ideas, and find your next co-founder. Future is here!</p>
+                
+            </div>
+        </div>
+    </section><br><br>
+
+
+
+
+
+
+<section id="upcoming-events">
+ <h2 class="section-heading text-green-400">Upcoming Events</h2>
+<div class="events-list">
+{% for event in events %}
+    <div class="event-card">
+        <h3><a href="{% url 'event_detail' event.id %}">{{ event.title }}</a></h3>
+        <p>{{ event.description|truncatewords:20 }}</p>
+        <p><strong>Date:</strong> {{ event.date }}</p>
+        <p><strong>Location:</strong> {{ event.location }}</p>
+    </div>
+    {% empty %}
+    <p>No events available at the moment.</p>
+    {% endfor %}
+</div></section><br><br><br><br>
+
+
+
+
+<!-- How It Works Section -->
+    <section id="how-it-works" class="py-16 bg-white rounded-xl shadow-lg mb-16">
+        <div class="text-center mb-12">
+            <h2 class="section-heading text-green-800">Works</h2>
+            <p class="text-xl text-gray-600 mt-4">Simple steps to connect with campus events.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-8">
+            <div class="text-center p-6 bg-blue-50 rounded-xl shadow-md border border-blue-200 animate-scale-in animate-delay-200">
+                <div class="text-blue-600 mb-4">
+                    <svg class="w-20 h-20 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-blue-800 mb-3">1. Discover Events</h3>
+                <p class="text-gray-700">Browse through a curated list of events from various colleges. Use filters to find exactly what you're looking for.</p>
+            </div>
+            <div class="text-center p-6 bg-purple-50 rounded-xl shadow-md border border-purple-200 animate-scale-in animate-delay-400">
+                <div class="text-purple-600 mb-4">
+                    <svg class="w-20 h-20 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-purple-800 mb-3">2. Connect & Participate</h3>
+                <p class="text-gray-700">Register for events, connect with organizers, and join a community of like-minded students.</p>
+            </div>
+            <div class="text-center p-6 bg-red-50 rounded-xl shadow-md border border-red-200 animate-scale-in animate-delay-600">
+                <div class="text-red-600 mb-4">
+                    <svg class="w-20 h-20 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-red-800 mb-3">3. Host Your Own</h3>
+                <p class="text-gray-700">Easily create and manage your events. Reach thousands of students and make your event a success!</p>
+            </div>
+        </div>
+    </section>
+
+ <!-- Testimonials Section -->
+    <section id="testimonials" class="py-6 bg-gray-100 rounded-xl shadow-lg mb-16">
+        <div class="text-center mb-12">
+            <h2 class="section-heading text-red-800">Reviews</h2>
+            <p class="text-xl text-gray-600 mt-4">Hear from students and organizers who love CollegeFest.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-8">
+            <div class="testimonial-card">
+                <p class="text-lg text-gray-700 italic mb-6">"CollegeFest transformed how our club promotes events. We've seen a massive increase in participation since we started using it. The interface is so intuitive!"</p>
+                <div class="flex items-center">
+                    <img class="w-16 h-16 rounded-full mr-4 border-2 border-indigo-400" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYuAwUjRT2a71lO3HFs6kh4O-qe62HkgC2Bg&s" alt="Student 1">
+                    <div>
+                        <p class="font-bold text-indigo-700">Alex Johnson</p>
+                        <p class="text-gray-500 text-sm">President, Tech Innovators Club</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="text-lg text-gray-700 italic mb-6">"I used to miss so many cool events. Now, with CollegeFest, I'm always in the loop! It's super easy to find events that match my interests. Highly recommend!"</p>
+                <div class="flex items-center">
+                    <img class="w-16 h-16 rounded-full mr-4 border-2 border-indigo-400" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY4MdZ2tQQ4QkG8UP8Ai1YKqQK8k5WcVdbpA&s" alt="Student 2">
+                    <div>
+                        <p class="font-bold text-indigo-700">Maria Garcia</p>
+                        <p class="text-gray-500 text-sm">Sophomore, Arts & Sciences</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="text-lg text-gray-700 italic mb-6">"The event creation process is seamless. As an organizer, I appreciate the detailed options and the broad reach CollegeFest provides. It's a game-changer for campus engagement."</p>
+                <div class="flex items-center">
+                    <img class="w-16 h-16 rounded-full mr-4 border-2 border-indigo-400" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRahQ1Nk7px-qxZKSsWcZbTzj7SUx-xEypMw&s" alt="Organizer 1">
+                    <div>
+                        <p class="font-bold text-indigo-700">Dr. Ben Carter</p>
+                        <p class="text-gray-500 text-sm">Faculty Advisor, Robotics Team</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="text-lg text-gray-700 italic mb-6">"Finding volunteer opportunities for campus events has never been easier. CollegeFest helps me contribute to my community and gain valuable experience. Fantastic platform!"</p>
+                <div class="flex items-center">
+                    <img class="w-16 h-16 rounded-full mr-4 border-2 border-indigo-400" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCCAu0lgLeJUGGVQZMG6YsnVSz0otCueWCUw&s" alt="Student 3">
+                    <div>
+                        <p class="font-bold text-indigo-700">Sophia Lee</p>
+                        <p class="text-gray-500 text-sm">Junior, Volunteer Coordinator</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Call to Action: Join Us -->
+    <section class="py-16 bg-indigo-700 text-white rounded-xl shadow-xl mb-16 text-center">
+        <h2 class="text-5xl font-extrabold mb-6">Ready to Dive In?</h2>
+        <p class="text-xl mb-8 max-w-3xl mx-auto">Join thousands of students and organizers who are making their college experience unforgettable with CollegeFest.</p>
+        <div class="space-x-4">
+            <a href="{% url 'register' %}" class="bg-white text-indigo-700 font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-200 transition duration-300 shadow-lg transform hover:scale-105">
+                Sign Up Now!
+            </a>
+            <a href="#upcoming-events" class="border-2 border-white text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-white hover:text-indigo-700 transition duration-300 shadow-lg transform hover:scale-105">
+                Browse Events
+            </a>
+        </div>
+    </section>
+
+
+ <!-- Partners/Sponsors Section (Optional but adds credibility) -->
+    <section class="py-16 bg-white rounded-xl shadow-lg mb-16">
+        <div class="text-center mb-12">
+            <h2 class="section-heading text-orange-600">Our Valued Partners</h2>
+            <p class="text-xl text-gray-600 mt-4">Collaborating to bring you the best campus experiences.</p>
+        </div>
+        <div class="flex flex-wrap justify-center items-center gap-20 px-8">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3b5a98f6-8edc-4a68-b64e-f06115b11a01.png" alt="University Logo" class="h-20 ">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/58a21590-3523-4223-80ff-7847b020ea00.png" alt="Tech Company Logo" class="h-20 ">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8193cc48-edfa-41a2-bee8-72bf70f2799c.png" alt="Local Business Logo" class="h-20 ">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0acbf2b5-d94a-4c5c-ba2a-0b1e67f25f46.png" alt="Student Org Logo" class="h-20 ">
+        </div>
+    </section>
+
+
+
+
+
+
+<footer class="bg-gray-900 text-gray-300 py-12 mt-20">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-white text-2xl font-bold mb-4">CollegeFest</h3>
+                <p class="text-sm">Your ultimate platform for discovering and hosting college events. Connecting students, organizers, and enthusiasts across campuses.</p>
+            </div>
+          
+            <div>
+                <h3 class="text-white text-xl font-bold mb-4">Connect</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-indigo-400 transition duration-300">Blog</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition duration-300">Careers</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition duration-300">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition duration-300">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div id="contact-us-section">
+                <h3 class="text-white text-xl font-bold mb-4">Contact Us</h3>
+                <p class="text-sm">Email: info@collegefest.com</p>
+                <p class="text-sm">Phone: +1 (123) 456-7890</p>
+                <p class="text-sm">Address: 123 Campus Lane, University City, CA 90210</p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300"><svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.772 1.668 4.92 4.92.058 1.265.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.148 3.252-1.668 4.772-4.92 4.92-1.265.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.772-1.668-4.92-4.92-.058-1.265-.07-1.645-.07-4.85s.012-3.584.07-4.85c.148-3.252 1.668-4.772 4.92-4.92 1.265-.058 1.645-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.668.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073s3.668-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.354-2.618-6.782-6.979-6.979-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.44-.645 1.44-1.44s-.645-1.44-1.44-1.44z"/></svg></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300"><svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .732.593 1.325 1.325 1.325h21.351c.732 0 1.325-.593 1.325-1.325v-21.35c0-.732-.593-1.325-1.325-1.325zm-11.447 19.46h-3.387v-10.91h3.387v10.91zm-1.693-12.268c-.963 0-1.744-.781-1.744-1.744s.781-1.744 1.744-1.744 1.744.781 1.744 1.744-.781 1.744-1.744 1.744zm13.357 12.268h-3.387v-5.305c0-1.27-.023-2.908-1.775-2.908-1.777 0-2.047 1.388-2.047 2.827v5.386h-3.387v-10.91h3.245v1.588h.046c.45-.858 1.54-1.76 3.185-1.76 3.403 0 4.039 2.233 4.039 5.137v5.945z"/></svg></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300"><svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.403 0-6.162 2.759-6.162 6.162 0 .483.055.953.154 1.401-5.124-.257-9.637-2.717-12.69-6.463-.524.9-.829 1.948-.829 3.064 0 2.13 1.084 4.006 2.724 5.107-.8-.025-1.555-.247-2.21-.612v.078c0 2.986 2.127 5.472 4.94 6.04-.52.141-1.07.217-1.635.217-.4 0-.79-.039-1.169-.111.78 2.443 3.05 4.222 5.75 4.262-2.102 1.648-4.759 2.63-7.663 2.63-.5 0-.994-.029-1.48-.086 2.72 1.74 5.95 2.76 9.43 2.76 11.363 0 17.56-9.473 17.56-17.697 0-.267-.007-.533-.02-.795.76-.549 1.418-1.233 1.943-2.016z"/></svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-sm text-gray-500 mt-8 border-t border-gray-700 pt-8">
+            <p>&copy; 2025 CollegeFest. All rights reserved. | Designed with ❤️ by Your Team.<br> KBP 1979, the college has been galloping towards academics, quality education and infrastructural accomplishment</p>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

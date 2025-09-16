@@ -1,0 +1,77 @@
+{% extends 'events/base.html' %}
+{% block content %}
+<style>
+
+  /* Container styling */
+form {
+  margin-top: 1.5rem;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Submit button */
+form button[type="submit"] {
+  background-color: #dc2626; /* red-600 */
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+  background-color: #b91c1c; /* red-700 */
+}
+
+/* Cancel link */
+form a {
+  color: #004080; /* indigo-900 */
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: 2px solid #004080;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+form a:hover {
+  background-color: #004080;
+  color: white;
+}
+
+/* Heading */
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #222222;
+}
+
+/* Paragraph */
+p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #333333;
+  max-width: 600px;
+}
+</style>
+
+
+
+
+
+
+
+<h1 class="custom-text">Your Heading</h1>
+<h2>Cancel Participation</h2>
+<p>Are you sure you want to cancel your participation in "{{ participation.event.title }}"?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Yes, Cancel Participation</button>
+  <a href="{% url 'my_participations' %}">No, Go Back</a>
+</form>
+{% endblock %}
