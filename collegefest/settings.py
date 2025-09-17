@@ -25,12 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$*7)m@x(t*ees03=g3@a7pbs96jd8-xy6)zs+qw5ew+(d2tu9-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = ["collegefest.onrender.com", "127.0.0.1", "localhost"]
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
@@ -81,6 +81,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        
     }
 }
 
@@ -132,12 +133,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")   # 👈 हे महत्
 
 
 
- 
+
+
+
+
 DATABASES = {
-    "default": dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR}/db.sqlite3",
-       
-    )
+    'default': dj_database_url.config()
+    
 }
 
 # Static files
@@ -145,4 +147,11 @@ STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+DATABASES = {
+       'default': dj_database_url.config(
+           default='sqlite:///db.sqlite3',  # fallback to SQLite if DATABASE_URL not set
+          
+       )
+   }
+   
